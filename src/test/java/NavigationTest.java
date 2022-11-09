@@ -20,22 +20,10 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-public class NavigationTest {
+public class NavigationTest extends BaseWebTest {
 
-    private WebDriver driver;
 
-    @BeforeEach
-    public void setup() {
-        WebDriverManager.firefoxdriver().setup();
-        driver = new FirefoxDriver();
-    }
-
-    @AfterEach
-    public void tearDown() {
-        driver.quit();
-    }
-
-    @Test
+   /* @Test
     public void navigateToGoogle() throws InterruptedException {
 
         driver.get("https://www.facebook.com");
@@ -259,13 +247,10 @@ public class NavigationTest {
         contactUs.writeMessage("hello world");
         contactUs.submit();
         contactUs.validateTheMessageIs("Your message has been successfully sent to our team.");
-    }
+    }*/
 
     @Test
     public void getElementsTest() {
-        driver.get("https://www.mercadolibre.com.co/");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5L));
 
         HomePage homePage = new HomePage(driver);
         homePage.searchFor("guitarra electrica");
