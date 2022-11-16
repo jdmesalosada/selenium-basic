@@ -2,6 +2,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
@@ -12,8 +13,10 @@ public abstract class BaseWebTest {
 
     @BeforeEach
     public void setup() {
-        WebDriverManager.firefoxdriver().setup();
-        driver = new FirefoxDriver();
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+       // WebDriverManager.firefoxdriver().setup();
+       // driver = new FirefoxDriver();
 
         driver.get("https://www.mercadolibre.com.co/");
         driver.manage().window().maximize();

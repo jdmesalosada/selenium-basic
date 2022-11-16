@@ -1,5 +1,6 @@
 package pageobjects;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -26,12 +27,14 @@ public class ResultsPage {
         PageFactory.initElements(driver, this);
     }
 
+    @Step("Obtener un resultado aleatorio")
     public WebElement getRandomResult() {
         Random rand = new Random();
         WebElement randomElement = results.get(rand.nextInt(results.size()));
         return randomElement;
     }
 
+    @Step("Click en un item aleatorio")
     public ResultModel clickOnRandomItem() {
         WebElement randomElement = getRandomResult();
 
