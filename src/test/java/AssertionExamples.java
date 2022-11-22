@@ -1,9 +1,11 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class AssertionExamples {
 
     @Test
+    @Disabled
     public void foo(){
 
       //  String actual = "pepito";

@@ -1,5 +1,15 @@
 plugins {
     id 'java'
+    id 'io.qameta.allure' version '2.11.2'
+}
+
+allure {
+    adapter.autoconfigure = true
+    version '2.20.1'
+
+    useJUnit5 {
+        version = '2.20.1'
+    }
 }
 
 group 'org.example'

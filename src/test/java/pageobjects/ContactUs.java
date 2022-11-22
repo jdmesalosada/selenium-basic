@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import util.driver.DriverManager;
 
 import java.time.Duration;
 
@@ -40,10 +41,8 @@ public class ContactUs {
     @FindBy(id = "algo")
     private WebElement elementDoesNotExist;
 
-    public ContactUs(WebDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5L));
-        PageFactory.initElements(driver, this);
+    public ContactUs() {
+        wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(5L));
     }
 
     public void writeOnAlgo(String subject) {

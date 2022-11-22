@@ -1,4 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Description;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -250,15 +251,16 @@ public class NavigationTest extends BaseWebTest {
     }*/
 
     @Test
+    @Description("busqueda de items para comprar")
     public void getElementsTest() {
 
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage();
         homePage.searchFor("guitarra electrica");
 
-        ResultsPage resultsPage = new ResultsPage(driver);
+        ResultsPage resultsPage = new ResultsPage();
         ResultModel expectedResultModel = resultsPage.clickOnRandomItem();
 
-        DetailsPage detailsPage = new DetailsPage(driver);
+        DetailsPage detailsPage = new DetailsPage();
         ResultModel actualResultModel =  detailsPage.getDetailInformation();
 
         Assertions.assertAll(
@@ -268,4 +270,32 @@ public class NavigationTest extends BaseWebTest {
                         actualResultModel.getName(), "product names don't match.")
         );
     }
+
+    @Test
+    @Description("busqueda de items para comprar algo nuevo")
+    public void getElementsTest2() {
+
+        HomePage homePage = new HomePage();
+        homePage.searchFor("iphone");
+
+        ResultsPage resultsPage = new ResultsPage();
+        ResultModel expectedResultModel = resultsPage.clickOnRandomItem();
+
+        DetailsPage detailsPage = new DetailsPage();
+        ResultModel actualResultModel =  detailsPage.getDetailInformation();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(expectedResultModel.getPrice(),
+                        actualResultModel.getPrice(), "prices don't match."),
+                () -> Assertions.assertEquals(expectedResultModel.getName(),
+                        actualResultModel.getName(), "product names don't match.")
+        );
+    }
+
+    @Test
+    @Description("busqueda de items para comprar algo nuevo")
+    public void fail() {
+        Assertions.assertTrue(false);
+    }
+
 }
